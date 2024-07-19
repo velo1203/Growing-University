@@ -8,42 +8,61 @@ const StyledInfo = styled.div`
     position: absolute;
     right: 50px;
     padding: 30px;
-    background-color: #f4f4f4;
+    background-color: #FDFEFE;
     display: flex;
     flex-direction: column;
     gap: 20px;
     border-radius: 10px;
+    border: 1px solid #EAEBEB;
     transition: all 0.2s;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     &:hover {
         scale: 1.01;
     }
 `;
 
+const StyledTitle = styled.h1`
+    margin: 0;
+    font-size: 1.5rem;
+`;
+
 const StyledInfomations = styled.div`
     display: flex;
     flex-direction: column;
-    & > p {
-        margin: 5px;
-        font-size: 1rem;
-    }
 `;
+
+const StyledInfoItem = styled.p`
+    margin: 5px;
+    font-size: 1rem;
+`;
+
 const StyledMoney = styled.span`
-    color: #b7b716;
+    color: goldenrod;
     font-weight: bold;
     font-size: 1.4rem;
 `;
+
+const StyledLabel = styled.span`
+    font-weight: normal;
+`;
+
 function Info() {
     const { cost, retry, honor } = useSelector((state: RootState) => state.app);
     const dispatch = useDispatch();
 
     return (
         <StyledInfo>
-            <h1>내정보</h1>
+            <StyledTitle>내 정보</StyledTitle>
             <StyledInfomations>
-                <p>
-                    돈:
+                <StyledInfoItem>
+                    <StyledLabel>돈:</StyledLabel>
                     <StyledMoney> {cost}</StyledMoney>원
+                </StyledInfoItem>
+                <StyledInfoItem>
+                    <StyledLabel>자부심(추가골드):</StyledLabel> <StyledMoney>{honor}</StyledMoney>원
+                </StyledInfoItem>
+                <StyledInfoItem>
+                    <StyledLabel>면제권:</StyledLabel> {retry}개
+                </StyledInfoItem>
                 </p>
                 <p>
                     자부심(추가돈): <StyledMoney>{honor}</StyledMoney>원

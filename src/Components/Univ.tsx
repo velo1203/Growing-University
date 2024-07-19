@@ -13,20 +13,21 @@ const StyledUniv = styled.div`
 `;
 
 const StyledUnivTitle = styled.div`
-    font-size: 1.3rem;
+    font-size: 24px;
     font-weight: bold;
-    margin-top: 15px;
+    margin-top: 40px;
 `;
 
 const StyledUnivInfo = styled.div`
-    font-size: 1rem;
-    margin-top: 5px;
-    padding: 25px;
+    font-size: 16px;
+    line-height: 1.8;
+    padding: 30px;
     font-weight: bold;
 `;
 
 const StyledUnivImg = styled.img`
     width: 180px;
+    aspect-ratio: 1;
 `;
 
 function Univ() {
@@ -45,9 +46,9 @@ function Univ() {
 
     return (
         <StyledUniv id="univ-container">
-            <StyledUnivImg src={`${uninfo[level - 1].name}.png`} alt="" />
+            <StyledUnivImg src={`${uninfo[level - 1].engname}.svg`} alt="" />
             <StyledUnivTitle>
-                {level}.{uninfo[level - 1].name}
+                {level}. {uninfo[level - 1].name}
             </StyledUnivTitle>
             <StyledUnivInfo>
                 <p>강화확률 : {uninfo[level - 1].successRate * 100}%</p>

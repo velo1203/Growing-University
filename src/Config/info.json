@@ -1,132 +1,151 @@
 [
     {
-        "name": "세종대학교",
+        "name": "단국대학교",
+        "engname": "DKU",
         "upgradeCost": 768,
         "sellPrice": 0,
         "successRate": 1,
         "retryCost": 1
     },
     {
-        "name": "경북대학교",
+        "name": "세종대학교",
+        "engname": "SJU",
         "upgradeCost": 1535,
         "sellPrice": 512,
         "successRate": 0.9,
         "retryCost": 1
     },
     {
-        "name": "인하대학교",
+        "name": "숭실대학교",
+        "engname": "SSU",
         "upgradeCost": 7668,
         "sellPrice": 13017,
         "successRate": 0.9,
         "retryCost": 1
     },
     {
-        "name": "건국대학교",
+        "name": "국민대학교",
+        "engname": "KMU",
         "upgradeCost": 11497,
         "sellPrice": 40043,
         "successRate": 0.87,
         "retryCost": 1
     },
     {
-        "name": "부산대학교",
+        "name": "홍익대학교",
+        "engname": "HIU",
         "upgradeCost": 17638,
         "sellPrice": 80013,
         "successRate": 0.81,
         "retryCost": 1
     },
     {
-        "name": "아주대학교",
+        "name": "동국대학교",
+        "engname": "DGU",
         "upgradeCost": 38266,
         "sellPrice": 150017,
         "successRate": 0.74,
         "retryCost": 1
     },
     {
-        "name": "울산대학교",
+        "name": "건국대학교",
+        "engname": "KKU",
         "upgradeCost": 74235,
         "sellPrice": 1200014,
         "successRate": 0.73,
         "retryCost": 1
     },
     {
-        "name": "중앙대학교",
+        "name": "이화여자대학교",
+        "engname": "EWU",
         "upgradeCost": 114814,
         "sellPrice": 1400057,
         "successRate": 0.67,
         "retryCost": 1
     },
     {
-        "name": "이화여자대학교",
+        "name": "서울시립대학교",
+        "engname": "UOS",
         "upgradeCost": 153047,
         "sellPrice": 1850042,
         "successRate": 0.65,
         "retryCost": 1
     },
     {
-        "name": "광주과학기술원GIST",
+        "name": "한국외국어대학교",
+        "engname": "HUFS",
         "upgradeCost": 344318,
         "sellPrice": 2056023,
         "successRate": 0.6,
         "retryCost": 2
     },
     {
-        "name": "서강대학교",
+        "name": "경희대학교",
+        "engname": "KHU",
         "upgradeCost": 382532,
         "sellPrice": 2500047,
         "successRate": 0.54,
         "retryCost": 2
     },
     {
-        "name": "울산과학기술원UNIST",
+        "name": "중앙대학교",
+        "engname": "CAU",
         "upgradeCost": 497274,
         "sellPrice": 2950078,
         "successRate": 0.51,
         "retryCost": 3
     },
     {
-        "name": "경희대학교",
+        "name": "한양대학교",
+        "engname": "HYU",
         "upgradeCost": 612013,
         "sellPrice": 3400043,
         "successRate": 0.43,
         "retryCost": 5
     },
     {
-        "name": "한양대학교",
+        "name": "성균관대학교",
+        "engname": "SKKU",
         "upgradeCost": 726760,
         "sellPrice": 3850067,
         "successRate": 0.38,
         "retryCost": 6
     },
     {
-        "name": "성균관대학교",
+        "name": "서강대학교",
+        "engname": "SU",
         "upgradeCost": 841536,
         "sellPrice": 4300021,
         "successRate": 0.34,
         "retryCost": 10
     },
     {
-        "name": "포스텍",
+        "name": "고려대학교",
+        "engname": "KU",
         "upgradeCost": 956297,
         "sellPrice": 4750029,
         "successRate": 0.29,
         "retryCost": 17
     },
     {
-        "name": "고려대학교",
+        "name": "연세대학교",
+        "engname": "KY",
         "upgradeCost": 1071028,
         "sellPrice": 5200083,
         "successRate": 0.23,
         "retryCost": 20
     },
     {
-        "name": "연세대학교",
+        "name": "포항공과대학교",
+        "engname": "POSTECH",
         "upgradeCost": 1185772,
         "sellPrice": 5650017,
         "successRate": 0.15,
         "retryCost": 23
     },
     {
-        "name": "카이스트",
+        "name": "한국과학기술원",
+        "engname": "KAIST",
         "upgradeCost": 1300556,
         "sellPrice": 6100051,
         "successRate": 0.1,
@@ -134,6 +153,7 @@
     },
     {
         "name": "서울대학교",
+        "engname": "SNU",
         "upgradeCost": 1415264,
         "sellPrice": 6550047,
         "successRate": 0,

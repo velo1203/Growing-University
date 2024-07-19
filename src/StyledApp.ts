@@ -13,4 +13,5 @@ export const StyledControl = styled.div`
     display: flex;
     justify-content: center;
     gap: 30px;
+    padding: 30px;
 `;
