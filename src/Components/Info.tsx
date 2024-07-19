@@ -46,7 +46,7 @@ function Info() {
                     <StyledMoney> {cost}</StyledMoney>원
                 </p>
                 <p>
-                    자부심(추가골드): <StyledMoney>{honor}</StyledMoney>원
+                    자부심(추가돈): <StyledMoney>{honor}</StyledMoney>원
                 </p>
                 <p>면제권: {retry}개</p>
             </StyledInfomations>
