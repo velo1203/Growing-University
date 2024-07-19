@@ -1,8 +1,15 @@
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { RootState } from "../Store/Store";
 
 const StyledUniv = styled.div`
     height: 350px;
     margin: 50px;
+    transition: transform 0.1s ease-out;
+    &.thud {
+        transform: scale(1.05);
+    }
 `;
 
 const StyledUnivTitle = styled.div`
@@ -10,6 +17,7 @@ const StyledUnivTitle = styled.div`
     font-weight: bold;
     margin-top: 15px;
 `;
+
 const StyledUnivInfo = styled.div`
     font-size: 1rem;
     margin-top: 5px;
@@ -21,10 +29,23 @@ const StyledUnivImg = styled.img`
     width: 180px;
 `;
 
-function Univ({ level, uninfo }: { level: number; uninfo: any }) {
+function Univ({ uninfo }: { uninfo: any }) {
+    const { level } = useSelector((state: RootState) => state.app);
+
+    useEffect(() => {
+        // 전환효과 코드
+        const element = document.getElementById("univ-container");
+        if (element) {
+            element.classList.add("thud");
+            setTimeout(() => {
+                element.classList.remove("thud");
+            }, 100);
+        }
+    }, [level]);
+
     return (
-        <StyledUniv>
-            <StyledUnivImg src={level + ".png"} alt="" />
+        <StyledUniv id="univ-container">
+            <StyledUnivImg src={`${level}.png`} alt="" />
             <StyledUnivTitle>
                 {level}.{uninfo[level - 1].name}
             </StyledUnivTitle>
