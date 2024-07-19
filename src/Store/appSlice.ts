@@ -78,6 +78,10 @@ const appSlice = createSlice({
         },
         // 대학 판매
         sell(state, action: PayloadAction<number>) {
+            if (state.level === 1) {
+                alert("팔 수 없습니다.");
+                return;
+            }
             state.cost += action.payload + state.honor;
             state.level = 1;
         },
