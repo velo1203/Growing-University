@@ -17,9 +17,9 @@ export interface AppState {
 const initialState: AppState = {
     // 상태 초기값 설정
     isOpen: false,
-    cost: 100000,
+    cost: 100000000000,
     isBroken: false,
-    retry: 0,
+    retry: 120391023,
     level: 1,
     retryCost: 1,
     honor: 0,
