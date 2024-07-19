@@ -3,7 +3,12 @@ import { Button } from "./Components/Button";
 import Info from "./Components/Info";
 import Univ from "./Components/Univ";
 import PopupWrapper from "./Components/Wrapper";
-import { StyledApp, StyledControl, StyledTitle } from "./StyledApp";
+import {
+    StyledApp,
+    StyledControl,
+    StyledSubTitle,
+    StyledTitle,
+} from "./StyledApp";
 import Shop from "./Components/Shop";
 import uninfo from "./info.json";
 import { upgradeSuccess } from "./Utils/random";
@@ -71,7 +76,7 @@ function App() {
     return (
         <StyledApp>
             <StyledTitle>대학교 키우기</StyledTitle>
-            <StyledSubTitle>S : 판매 L : 구매</StyledSubTitle>
+            <StyledSubTitle>S키 : 판매 L키 : 구매</StyledSubTitle>
             <Info handleOpenPopup={handleOpenPopup} cost={cost} retry={retry} />
             <Univ uninfo={uninfo} level={level} />
             <PopupWrapper isOpen={isOpen} onClose={handleClosePopup}>
