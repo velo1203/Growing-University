@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useEffect } from "react";
 import { Button } from "./Button";
 
 const StyledRetry = styled.div`
@@ -22,6 +23,19 @@ function Retry({
     handleRetry: () => void;
     handleUseRetry: () => void;
 }) {
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "l") {
+                handleRetry();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [handleRetry]);
+
     return (
         <StyledRetry>
             <h1>아이고 이런!</h1>
