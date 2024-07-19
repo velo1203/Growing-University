@@ -8,36 +8,36 @@
     {
         "name": "경북대학교",
         "upgradeCost": 2007,
-        "sellPrice": 1712,
+        "sellPrice": 512,
         "successRate": 0.9
     },
     {
         "name": "인하대학교",
         "upgradeCost": 10023,
-        "sellPrice": 16017,
+        "sellPrice": 13017,
         "successRate": 0.9
     },
     {
         "name": "건국대학교",
         "upgradeCost": 15029,
-        "sellPrice": 60043,
+        "sellPrice": 40043,
         "successRate": 0.87
     },
     {
         "name": "부산대학교",
         "upgradeCost": 23057,
-        "sellPrice": 150013,
+        "sellPrice": 80013,
         "successRate": 0.81
     },
     {
         "name": "아주대학교",
         "upgradeCost": 50021,
-        "sellPrice": 180017,
+        "sellPrice": 150017,
         "successRate": 0.74
     },
     {
         "name": "울산대학교",
-        "upgradeCost": 100039,
+        "upgradeCost": 97039,
         "sellPrice": 1200014,
         "successRate": 0.73
     },

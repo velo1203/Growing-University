@@ -6,8 +6,6 @@ const StyledRetry = styled.div`
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 10px;
 
     & > p {
         font-size: 20px;
@@ -15,7 +13,6 @@ const StyledRetry = styled.div`
     & > h1 {
         font-size: 24px;
     }
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 function Retry({

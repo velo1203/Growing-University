@@ -1,5 +1,21 @@
 import styled from "styled-components";
 import { Button } from "./Button";
+import shopItemsData from "../shop.json"; // JSON 파일 import
+
+interface Item {
+    id: number;
+    name: string;
+    price: number;
+    startLevel?: number;
+}
+
+// Parse shop items to replace null with undefined
+const shopItems: { items: Item[] } = {
+    items: shopItemsData.items.map((item) => ({
+        ...item,
+        startLevel: item.startLevel === null ? undefined : item.startLevel,
+    })),
+};
 
 const StyledItems = styled.div`
     display: grid;
@@ -23,24 +39,46 @@ const StyledItem = styled.div`
     }
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
-function Shop() {
+
+function Shop({
+    setRetry,
+    cost,
+    setCost,
+    retry,
+    setlevel,
+}: {
+    setRetry: (retry: number) => void;
+    cost: number;
+    setCost: (cost: number) => void;
+    retry: number;
+    setlevel: (level: number) => void;
+}) {
+    const buyItem = (itemPrice: number, startLevel?: number) => {
+        if (cost < itemPrice) {
+            alert("돈이 부족합니다.");
+            return;
+        }
+        if (startLevel !== undefined) {
+            setlevel(startLevel);
+        } else {
+            setRetry(retry + 1);
+        }
+        setCost(cost - itemPrice);
+    };
+
     return (
         <StyledItems>
-            <StyledItem>
-                <h1>면제권</h1>
-                <p>가격: 1000원</p>
-                <Button>구매</Button>
-            </StyledItem>
-            <StyledItem>
-                <h1>5레벨부터 시작</h1>
-                <p>가격: 1000원</p>
-                <Button>구매</Button>
-            </StyledItem>
-            <StyledItem>
-                <h1>8레벨부터 시작</h1>
-                <p>가격: 1000원</p>
-                <Button>구매</Button>
-            </StyledItem>
+            {shopItems.items.map((item: Item) => (
+                <StyledItem key={item.id}>
+                    <h1>{item.name}</h1>
+                    <p>가격: {item.price}원</p>
+                    <Button
+                        onClick={() => buyItem(item.price, item.startLevel)}
+                    >
+                        구매
+                    </Button>
+                </StyledItem>
+            ))}
         </StyledItems>
     );
 }

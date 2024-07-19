@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Button } from "./components/Button";
 import Info from "./components/Info";
 import Univ from "./components/Univ";
@@ -10,47 +10,63 @@ import { upgradeSuccess } from "./utils/random";
 import Retry from "./components/Retry";
 
 function App() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [cost, setCost] = useState(100000);
-    const handleOpenPopup = () => setIsOpen(true);
-    const handleClosePopup = () => setIsOpen(false);
-    const [isBroken, SetIsBroken] = useState(false);
-    const [retry, setRetry] = useState(0);
+    const [isOpen, setIsOpen] = useState(false); // 상태값을 열고 닫는 함수
+    const [cost, setCost] = useState(100000); // 돈
+    const [isBroken, setIsBroken] = useState(false); // 대학교 떨어짐
+    const [retry, setRetry] = useState(0); //면제권
+    const [level, setLevel] = useState(1); //레벨
 
-    const handleRetry = () => {
-        SetIsBroken(false);
+    const handleOpenPopup = useCallback(() => setIsOpen(true), []);
+    const handleClosePopup = useCallback(() => setIsOpen(false), []);
+    const handleRetry = useCallback(() => {
+        setIsBroken(false);
         setLevel(1);
-    };
-
-    const handleUseRetry = () => {
+    }, []);
+    const handleUseRetry = useCallback(() => {
         if (retry === 0) {
             alert("면제권이 없습니다.");
             return;
         }
-        setRetry(retry - 1);
-        SetIsBroken(false);
-    };
+        setRetry((prevRetry) => prevRetry - 1);
+        setIsBroken(false);
+    }, [retry]);
 
-    const [level, setLevel] = useState(1);
-    const handleUpgrade = () => {
-        if (cost < uninfo[level - 1].upgradeCost) {
+    const handleUpgrade = useCallback(() => {
+        const currentLevelInfo = uninfo[level - 1];
+        if (cost < currentLevelInfo.upgradeCost) {
             alert("돈이 부족합니다.");
             return;
         }
-        setCost(cost - uninfo[level - 1].upgradeCost);
-        if (!upgradeSuccess(uninfo[level - 1].successRate)) {
-            SetIsBroken(true);
+        setCost((prevCost) => prevCost - currentLevelInfo.upgradeCost);
+        if (!upgradeSuccess(currentLevelInfo.successRate)) {
+            setIsBroken(true);
+            return;
         }
         if (level === 20) {
             alert("축하드립니다!");
             return;
         }
-        setLevel(level + 1);
-    };
-    const handleSell = () => {
-        setCost(cost + uninfo[level - 1].sellPrice);
+        setLevel((prevLevel) => prevLevel + 1);
+    }, [cost, level]);
+
+    const handleSell = useCallback(() => {
+        const currentLevelInfo = uninfo[level - 1];
+        setCost((prevCost) => prevCost + currentLevelInfo.sellPrice);
         setLevel(1);
-    };
+    }, [level]);
+
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "l" && !isBroken) {
+                handleUpgrade();
+            } else if (event.key === "s" && !isBroken) {
+                handleSell();
+            }
+        };
+
+        window.addEventListener("keyup", handleKeyDown);
+        return () => window.removeEventListener("keyup", handleKeyDown);
+    }, [handleUpgrade, isBroken, handleSell]);
 
     return (
         <StyledApp>
@@ -58,7 +74,13 @@ function App() {
             <Info handleOpenPopup={handleOpenPopup} cost={cost} />
             <Univ uninfo={uninfo} level={level} />
             <PopupWrapper isOpen={isOpen} onClose={handleClosePopup}>
-                <Shop />
+                <Shop
+                    setlevel={setLevel}
+                    setRetry={setRetry}
+                    retry={retry}
+                    cost={cost}
+                    setCost={setCost}
+                />
             </PopupWrapper>
             <PopupWrapper isOpen={isBroken} onClose={() => {}}>
                 <Retry
