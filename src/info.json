@@ -1,0 +1,122 @@
+[
+    {
+        "name": "세종대학교",
+        "upgradeCost": 1003,
+        "sellPrice": 507,
+        "successRate": 1
+    },
+    {
+        "name": "경북대학교",
+        "upgradeCost": 2007,
+        "sellPrice": 1712,
+        "successRate": 0.9
+    },
+    {
+        "name": "인하대학교",
+        "upgradeCost": 10023,
+        "sellPrice": 16017,
+        "successRate": 0.9
+    },
+    {
+        "name": "건국대학교",
+        "upgradeCost": 15029,
+        "sellPrice": 60043,
+        "successRate": 0.87
+    },
+    {
+        "name": "부산대학교",
+        "upgradeCost": 23057,
+        "sellPrice": 150013,
+        "successRate": 0.81
+    },
+    {
+        "name": "아주대학교",
+        "upgradeCost": 50021,
+        "sellPrice": 180017,
+        "successRate": 0.74
+    },
+    {
+        "name": "울산대학교",
+        "upgradeCost": 100039,
+        "sellPrice": 1200014,
+        "successRate": 0.73
+    },
+    {
+        "name": "중앙대학교",
+        "upgradeCost": 150083,
+        "sellPrice": 1400057,
+        "successRate": 0.67
+    },
+    {
+        "name": "이화여자대학교",
+        "upgradeCost": 200061,
+        "sellPrice": 1850042,
+        "successRate": 0.65
+    },
+    {
+        "name": "광주과학기술원GIST",
+        "upgradeCost": 450089,
+        "sellPrice": 2056023,
+        "successRate": 0.6
+    },
+    {
+        "name": "서강대학교",
+        "upgradeCost": 500042,
+        "sellPrice": 2500047,
+        "successRate": 0.54
+    },
+    {
+        "name": "울산과학기술원UNIST",
+        "upgradeCost": 650031,
+        "sellPrice": 2950078,
+        "successRate": 0.51
+    },
+    {
+        "name": "경희대학교",
+        "upgradeCost": 800017,
+        "sellPrice": 3400043,
+        "successRate": 0.43
+    },
+    {
+        "name": "한양대학교",
+        "upgradeCost": 950013,
+        "sellPrice": 3850067,
+        "successRate": 0.4
+    },
+    {
+        "name": "성균관대학교",
+        "upgradeCost": 1100047,
+        "sellPrice": 4300021,
+        "successRate": 0.38
+    },
+    {
+        "name": "포스텍",
+        "upgradeCost": 1250061,
+        "sellPrice": 4750029,
+        "successRate": 0.32
+    },
+    {
+        "name": "고려대학교",
+        "upgradeCost": 1400037,
+        "sellPrice": 5200083,
+        "successRate": 0.3
+    },
+    {
+        "name": "연세대학교",
+        "upgradeCost": 1550029,
+        "sellPrice": 5650017,
+        "successRate": 0.26
+    },
+    {
+        "name": "카이스트",
+        "upgradeCost": 1700073,
+        "sellPrice": 6100051,
+        "successRate": 0.21
+    },
+    {
+        "name": "서울대학교",
+        "upgradeCost": 1850019,
+        "sellPrice": 6550047,
+        "successRate": 0.1
+    }
+]
