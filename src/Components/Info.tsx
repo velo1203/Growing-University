@@ -64,11 +64,6 @@ function Info() {
                 <StyledInfoItem>
                     <StyledLabel>면제권:</StyledLabel> {retry}개
                 </StyledInfoItem>
-
-                <p>
-                    자부심(추가돈): <StyledMoney>{honor}</StyledMoney>원
-                </p>
-                <p>면제권: {retry}개</p>
             </StyledInfomations>
             <Button onClick={() => dispatch(openPopup())}>상점가기</Button>
         </StyledInfo>
