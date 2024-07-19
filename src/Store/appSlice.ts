@@ -1,7 +1,8 @@
-// features/appSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { upgradeSuccess } from "../Utils/random";
 import uninfo from "../Config/info.json";
+
+// 상태 인터페이스 정의
 export interface AppState {
     isOpen: boolean;
     cost: number;
@@ -11,7 +12,9 @@ export interface AppState {
     retryCost: number;
 }
 
+// 초기 상태 설정
 const initialState: AppState = {
+    // 상태 초기값 설정
     isOpen: false,
     cost: 100000,
     isBroken: false,
@@ -24,16 +27,20 @@ const appSlice = createSlice({
     name: "app",
     initialState,
     reducers: {
+        // 팝업 열기
         openPopup(state) {
             state.isOpen = true;
         },
+        // 팝업 닫기
         closePopup(state) {
             state.isOpen = false;
         },
+        // 대학 실패 후 다시 시작
         retry(state) {
             state.isBroken = false;
             state.level = 1;
         },
+        // 면제권 사용
         usingRetry(state) {
             if (state.retry === 0) {
                 alert("면제권이 없습니다.");
@@ -46,6 +53,7 @@ const appSlice = createSlice({
             state.retry -= uninfo[state.level - 1].retryCost;
             state.isBroken = false;
         },
+        // 대학 레벨 업그레이드
         upgrade(
             state,
             action: PayloadAction<{ upgradeCost: number; successRate: number }>
@@ -66,24 +74,33 @@ const appSlice = createSlice({
             state.level += 1;
             state.retryCost = uninfo[state.level - 1].retryCost;
         },
+        // 대학 판매
         sell(state, action: PayloadAction<number>) {
             state.cost += action.payload;
             state.level = 1;
         },
+        // 아이템 구매
         buyItem(
             state,
-            action: PayloadAction<{ itemPrice: number; startLevel?: number }>
+            action: PayloadAction<{
+                itemPrice: number;
+                target: string;
+                value: number;
+            }>
         ) {
             if (state.cost < action.payload.itemPrice) {
                 alert("돈이 부족합니다.");
                 return;
             }
-            if (action.payload.startLevel !== undefined) {
-                state.level = action.payload.startLevel;
-            } else {
-                state.retry += 1;
-            }
             state.cost -= action.payload.itemPrice;
+
+            // 각 타겟에 따라 상태 업데이트
+            if (action.payload.target === "retryCost") {
+                state.retry += action.payload.value;
+            } else if (action.payload.target === "startLevel") {
+                state.level = action.payload.value;
+                state.retryCost = uninfo[action.payload.value - 1].retryCost;
+            }
         },
     },
 });

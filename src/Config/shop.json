@@ -4,19 +4,29 @@
             "id": 1,
             "name": "면제권",
             "price": 1542000,
-            "startLevel": null
+            "target": "retryCost",
+            "value": 1
+        },
+        {
+            "id": 1,
+            "name": "면제권 5개",
+            "price": 7710000,
+            "target": "retryCost",
+            "value": 5
         },
         {
             "id": 2,
             "name": "5레벨부터 시작",
             "price": 101119,
-            "startLevel": 5
+            "target": "startLevel",
+            "value": 5
         },
         {
             "id": 3,
             "name": "7레벨부터 시작",
             "price": 529436,
-            "startLevel": 7
+            "target": "startLevel",
+            "value": 7
         }
     ]
 }

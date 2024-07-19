@@ -9,16 +9,9 @@ interface Item {
     id: number;
     name: string;
     price: number;
-    startLevel?: number;
+    target: string;
+    value: number;
 }
-
-// Parse shop items to replace null with undefined
-const shopItems: { items: Item[] } = {
-    items: shopItemsData.items.map((item) => ({
-        ...item,
-        startLevel: item.startLevel === null ? undefined : item.startLevel,
-    })),
-};
 
 const StyledItems = styled.div`
     display: grid;
@@ -46,19 +39,23 @@ const StyledItem = styled.div`
 function Shop() {
     const dispatch = useDispatch();
 
-    const handleBuyItem = (itemPrice: number, startLevel?: number) => {
-        dispatch(buyItem({ itemPrice, startLevel }));
+    // 아이템 구매 핸들러
+    const handleBuyItem = (
+        itemPrice: number,
+        itemtarget: string,
+        itemvalue: number
+    ) => {
+        dispatch(buyItem({ itemPrice, target: itemtarget, value: itemvalue }));
     };
-
     return (
         <StyledItems>
-            {shopItems.items.map((item: Item) => (
+            {shopItemsData.items.map((item: Item) => (
                 <StyledItem key={item.id}>
                     <h1>{item.name}</h1>
                     <p>가격: {item.price}원</p>
                     <Button
                         onClick={() =>
-                            handleBuyItem(item.price, item.startLevel)
+                            handleBuyItem(item.price, item.target, item.value)
                         }
                     >
                         구매

@@ -7,3 +7,10 @@
 ::root {
     --primary-color: #4fb8f6;
 }
+/* 전체 사이트에서 텍스트 선택 비활성화 */
+body {
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+    user-select: none; /* 표준 속성 */
+}
