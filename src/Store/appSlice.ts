@@ -1,21 +1,23 @@
 // features/appSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { upgradeSuccess } from "../Utils/random";
-
+import uninfo from "../Config/info.json";
 export interface AppState {
     isOpen: boolean;
     cost: number;
     isBroken: boolean;
     retry: number;
     level: number;
+    retryCost: number;
 }
 
 const initialState: AppState = {
     isOpen: false,
-    cost: 100000,
+    cost: 100000000,
     isBroken: false,
     retry: 0,
     level: 1,
+    retryCost: 1,
 };
 
 const appSlice = createSlice({
@@ -37,7 +39,11 @@ const appSlice = createSlice({
                 alert("면제권이 없습니다.");
                 return;
             }
-            state.retry -= 1;
+            if (state.retry < uninfo[state.level - 1].retryCost) {
+                alert("면제권이 부족합니다.");
+                return;
+            }
+            state.retry -= uninfo[state.level - 1].retryCost;
             state.isBroken = false;
         },
         upgrade(
@@ -58,6 +64,7 @@ const appSlice = createSlice({
                 return;
             }
             state.level += 1;
+            state.retryCost = uninfo[state.level - 1].retryCost;
         },
         sell(state, action: PayloadAction<number>) {
             state.cost += action.payload;

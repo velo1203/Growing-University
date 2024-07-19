@@ -5,14 +5,9 @@ import { Button } from "./Components/Button.ts";
 import Info from "./Components/Info";
 import Univ from "./Components/Univ";
 import PopupWrapper from "./Components/Wrapper";
-import {
-    StyledApp,
-    StyledControl,
-    StyledSubTitle,
-    StyledTitle,
-} from "./StyledApp";
+import { StyledApp, StyledControl, StyledTitle } from "./StyledApp";
 import Shop from "./Components/Shop";
-import uninfo from "./info.json";
+import uninfo from "./Config/info.json";
 import { closePopup, upgrade, sell } from "./Store/appSlice";
 import { RootState } from "./Store/Store.ts";
 import Retry from "./Components/Retry.tsx";
@@ -41,7 +36,6 @@ function App() {
     return (
         <StyledApp>
             <StyledTitle>대학교 키우기</StyledTitle>
-            <StyledSubTitle>S키 : 판매 L키 : 구매</StyledSubTitle>
             <Info />
             <Univ uninfo={uninfo} level={level} />
             <PopupWrapper

@@ -3,7 +3,7 @@
         {
             "id": 1,
             "name": "면제권",
-            "price": 3000000,
+            "price": 1542000,
             "startLevel": null
         },
         {
@@ -14,9 +14,9 @@
         },
         {
             "id": 3,
-            "name": "8레벨부터 시작",
+            "name": "7레벨부터 시작",
             "price": 529436,
-            "startLevel": 8
+            "startLevel": 7
         }
     ]
 }

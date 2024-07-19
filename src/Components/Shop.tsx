@@ -1,9 +1,9 @@
 // Shop.tsx
 import styled from "styled-components";
 import { Button } from "./Button";
-import shopItemsData from "../shop.json"; // JSON 파일 import
+import shopItemsData from "../Config/shop.json"; // JSON 파일 import
 import { useDispatch } from "react-redux";
-import { buyItem, closePopup } from "../Store/appSlice";
+import { buyItem } from "../Store/appSlice";
 
 interface Item {
     id: number;
@@ -48,7 +48,6 @@ function Shop() {
 
     const handleBuyItem = (itemPrice: number, startLevel?: number) => {
         dispatch(buyItem({ itemPrice, startLevel }));
-        dispatch(closePopup());
     };
 
     return (
