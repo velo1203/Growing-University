@@ -11,7 +11,7 @@ import Retry from "./components/Retry";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false); // 상태값을 열고 닫는 함수
-    const [cost, setCost] = useState(100000); // 돈
+    const [cost, setCost] = useState(1000000); // 돈
     const [isBroken, setIsBroken] = useState(false); // 대학교 떨어짐
     const [retry, setRetry] = useState(0); //면제권
     const [level, setLevel] = useState(1); //레벨
@@ -71,7 +71,7 @@ function App() {
     return (
         <StyledApp>
             <StyledTitle>대학교 키우기</StyledTitle>
-            <Info handleOpenPopup={handleOpenPopup} cost={cost} />
+            <Info handleOpenPopup={handleOpenPopup} cost={cost} retry={retry} />
             <Univ uninfo={uninfo} level={level} />
             <PopupWrapper isOpen={isOpen} onClose={handleClosePopup}>
                 <Shop
@@ -80,6 +80,7 @@ function App() {
                     retry={retry}
                     cost={cost}
                     setCost={setCost}
+                    onclose={handleClosePopup}
                 />
             </PopupWrapper>
             <PopupWrapper isOpen={isBroken} onClose={() => {}}>

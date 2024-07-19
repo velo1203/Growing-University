@@ -46,12 +46,14 @@ function Shop({
     setCost,
     retry,
     setlevel,
+    onclose,
 }: {
     setRetry: (retry: number) => void;
     cost: number;
     setCost: (cost: number) => void;
     retry: number;
     setlevel: (level: number) => void;
+    onclose: () => void;
 }) {
     const buyItem = (itemPrice: number, startLevel?: number) => {
         if (cost < itemPrice) {
@@ -64,6 +66,7 @@ function Shop({
             setRetry(retry + 1);
         }
         setCost(cost - itemPrice);
+        onclose();
     };
 
     return (

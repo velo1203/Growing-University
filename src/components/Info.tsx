@@ -33,9 +33,11 @@ const StyledMoney = styled.span`
 function Info({
     handleOpenPopup,
     cost,
+    retry,
 }: {
     handleOpenPopup: () => void;
     cost: number;
+    retry: number;
 }) {
     return (
         <StyledInfo>
@@ -45,7 +47,7 @@ function Info({
                     돈:
                     <StyledMoney> {cost}원</StyledMoney>
                 </p>
-                <p>면제권: 1개</p>
+                <p>면제권: {retry}개</p>
             </StyledInfomations>
             <Button onClick={handleOpenPopup}>상점가기</Button>
         </StyledInfo>
