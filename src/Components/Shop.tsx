@@ -10,6 +10,7 @@ interface Item {
     name: string;
     price: number;
     target: string;
+    description: string;
     value: number;
 }
 
@@ -28,7 +29,8 @@ const StyledItem = styled.div`
     background-color: #f4f4f4;
     border-radius: 10px;
     & > p {
-        font-size: 15px;
+        font-size: 13px;
+        font-weight: bold;
     }
     & > h1 {
         font-size: 24px;
@@ -52,7 +54,10 @@ function Shop() {
             {shopItemsData.items.map((item: Item) => (
                 <StyledItem key={item.id}>
                     <h1>{item.name}</h1>
-                    <p>가격: {item.price}원</p>
+                    <p>{item.description}</p>
+                    <p>
+                        가격: <span>{item.price}</span>원
+                    </p>
                     <Button
                         onClick={() =>
                             handleBuyItem(item.price, item.target, item.value)

@@ -37,7 +37,7 @@ function App() {
         <StyledApp>
             <StyledTitle>대학교 키우기</StyledTitle>
             <Info />
-            <Univ uninfo={uninfo} />
+            <Univ />
             <PopupWrapper
                 isOpen={isOpen}
                 onClose={() => dispatch(closePopup())}

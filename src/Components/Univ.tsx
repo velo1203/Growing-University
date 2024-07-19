@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { RootState } from "../Store/Store";
-
+import uninfo from "../Config/info.json";
 const StyledUniv = styled.div`
     height: 350px;
     margin: 50px;
@@ -29,7 +29,7 @@ const StyledUnivImg = styled.img`
     width: 180px;
 `;
 
-function Univ({ uninfo }: { uninfo: any }) {
+function Univ() {
     const { level } = useSelector((state: RootState) => state.app);
 
     useEffect(() => {

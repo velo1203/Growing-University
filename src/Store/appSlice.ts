@@ -10,6 +10,7 @@ export interface AppState {
     retry: number;
     level: number;
     retryCost: number;
+    honor: number;
 }
 
 // 초기 상태 설정
@@ -21,6 +22,7 @@ const initialState: AppState = {
     retry: 0,
     level: 1,
     retryCost: 1,
+    honor: 0,
 };
 
 const appSlice = createSlice({
@@ -76,7 +78,7 @@ const appSlice = createSlice({
         },
         // 대학 판매
         sell(state, action: PayloadAction<number>) {
-            state.cost += action.payload;
+            state.cost += action.payload + state.honor;
             state.level = 1;
         },
         // 아이템 구매
@@ -96,10 +98,14 @@ const appSlice = createSlice({
 
             // 각 타겟에 따라 상태 업데이트
             if (action.payload.target === "retryCost") {
+                //면제권
                 state.retry += action.payload.value;
             } else if (action.payload.target === "startLevel") {
+                //레벨 시작
                 state.level = action.payload.value;
                 state.retryCost = uninfo[action.payload.value - 1].retryCost;
+            } else if (action.payload.target === "honor") {
+                state.honor += action.payload.value;
             }
         },
     },

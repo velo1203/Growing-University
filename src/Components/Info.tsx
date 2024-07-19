@@ -25,16 +25,16 @@ const StyledInfomations = styled.div`
     flex-direction: column;
     & > p {
         margin: 5px;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 `;
 const StyledMoney = styled.span`
-    color: #dfdf6c;
+    color: #b7b716;
     font-weight: bold;
     font-size: 1.4rem;
 `;
 function Info() {
-    const { cost, retry } = useSelector((state: RootState) => state.app);
+    const { cost, retry, honor } = useSelector((state: RootState) => state.app);
     const dispatch = useDispatch();
 
     return (
@@ -43,7 +43,10 @@ function Info() {
             <StyledInfomations>
                 <p>
                     돈:
-                    <StyledMoney> {cost}원</StyledMoney>
+                    <StyledMoney> {cost}</StyledMoney>원
+                </p>
+                <p>
+                    자부심(추가골드): <StyledMoney>{honor}</StyledMoney>원
                 </p>
                 <p>면제권: {retry}개</p>
             </StyledInfomations>
