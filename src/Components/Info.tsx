@@ -8,12 +8,12 @@ const StyledInfo = styled.div`
     position: absolute;
     right: 50px;
     padding: 30px;
-    background-color: #FDFEFE;
+    background-color: #fdfefe;
     display: flex;
     flex-direction: column;
     gap: 20px;
     border-radius: 10px;
-    border: 1px solid #EAEBEB;
+    border: 1px solid #eaebeb;
     transition: all 0.2s;
     &:hover {
         scale: 1.01;
@@ -58,12 +58,13 @@ function Info() {
                     <StyledMoney> {cost}</StyledMoney>원
                 </StyledInfoItem>
                 <StyledInfoItem>
-                    <StyledLabel>자부심(추가골드):</StyledLabel> <StyledMoney>{honor}</StyledMoney>원
+                    <StyledLabel>자부심(추가골드):</StyledLabel>{" "}
+                    <StyledMoney>{honor}</StyledMoney>원
                 </StyledInfoItem>
                 <StyledInfoItem>
                     <StyledLabel>면제권:</StyledLabel> {retry}개
                 </StyledInfoItem>
-                </p>
+
                 <p>
                     자부심(추가돈): <StyledMoney>{honor}</StyledMoney>원
                 </p>
