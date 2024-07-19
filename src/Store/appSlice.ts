@@ -13,7 +13,7 @@ export interface AppState {
 
 const initialState: AppState = {
     isOpen: false,
-    cost: 100000000,
+    cost: 100000,
     isBroken: false,
     retry: 0,
     level: 1,
