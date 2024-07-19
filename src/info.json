@@ -81,42 +81,42 @@
         "name": "한양대학교",
         "upgradeCost": 855012,
         "sellPrice": 3850067,
-        "successRate": 0.4
+        "successRate": 0.38
     },
     {
         "name": "성균관대학교",
         "upgradeCost": 990042,
         "sellPrice": 4300021,
-        "successRate": 0.38
+        "successRate": 0.34
     },
     {
         "name": "포스텍",
         "upgradeCost": 1125055,
         "sellPrice": 4750029,
-        "successRate": 0.32
+        "successRate": 0.29
     },
     {
         "name": "고려대학교",
         "upgradeCost": 1260033,
         "sellPrice": 5200083,
-        "successRate": 0.3
+        "successRate": 0.23
     },
     {
         "name": "연세대학교",
         "upgradeCost": 1395026,
         "sellPrice": 5650017,
-        "successRate": 0.26
+        "successRate": 0.15
     },
     {
         "name": "카이스트",
         "upgradeCost": 1530066,
         "sellPrice": 6100051,
-        "successRate": 0.21
+        "successRate": 0.1
     },
     {
         "name": "서울대학교",
         "upgradeCost": 1665017,
         "sellPrice": 6550047,
-        "successRate": 0.1
+        "successRate": 0
     }
 ]
