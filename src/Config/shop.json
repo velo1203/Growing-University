@@ -19,7 +19,7 @@
         {
             "id": 3,
             "name": "5레벨부터 시작",
-            "description": "5레벨부터 시작합니다.(1회)",
+            "description": "5레벨부터 시작합니다. (1회)",
             "price": 101119,
             "target": "startLevel",
             "value": 5
@@ -27,7 +27,7 @@
         {
             "id": 4,
             "name": "7레벨부터 시작",
-            "description": "7레벨부터 시작합니다.(1회)",
+            "description": "7레벨부터 시작합니다. (1회)",
             "price": 529436,
             "target": "startLevel",
             "value": 7

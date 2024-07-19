@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const Button = styled.button`
     cursor: pointer;
-    padding: 15px 30px;
-    font-size: 1.4rem;
-    border-radius: 10px;
-    font-weight: bold;
+    padding: 30px 60px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    border-radius: 16px;
+    background-color: #EAEBEB;
+    border: 1px solid #EAEBEB;
     transition: all 0.1s;
     &:hover {
         scale: 1.03;
