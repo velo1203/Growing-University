@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { useEffect } from "react";
 import { Button } from "./Button";
+import { retry, useRetry } from "../Store/appSlice";
+import { useDispatch } from "react-redux";
 
 const StyledRetry = styled.div`
     display: flex;
@@ -16,32 +17,27 @@ const StyledRetry = styled.div`
     }
 `;
 
-function Retry({
-    handleRetry,
-    handleUseRetry,
-}: {
-    handleRetry: () => void;
-    handleUseRetry: () => void;
-}) {
-    useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === "l") {
-                handleRetry();
-            }
-        };
-
-        window.addEventListener("keydown", handleKeyDown);
-        return () => {
-            window.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [handleRetry]);
+function Retry() {
+    const dispatch = useDispatch();
 
     return (
         <StyledRetry>
             <h1>아이고 이런!</h1>
             <p>대학을 떨어지셨네요</p>
-            <Button onClick={handleRetry}>다시하기</Button>
-            <Button onClick={handleUseRetry}>면제권 사용</Button>
+            <Button
+                onClick={() => {
+                    dispatch(retry());
+                }}
+            >
+                다시하기
+            </Button>
+            <Button
+                onClick={() => {
+                    dispatch(useRetry());
+                }}
+            >
+                면제권 사용
+            </Button>
         </StyledRetry>
     );
 }

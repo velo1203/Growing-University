@@ -1,5 +1,7 @@
-import { useEffect, useState, useCallback } from "react";
-import { Button } from "./Components/Button";
+// App.tsx
+
+import { useSelector, useDispatch } from "react-redux";
+import { Button } from "./Components/Button.ts";
 import Info from "./Components/Info";
 import Univ from "./Components/Univ";
 import PopupWrapper from "./Components/Wrapper";
@@ -11,89 +13,45 @@ import {
 } from "./StyledApp";
 import Shop from "./Components/Shop";
 import uninfo from "./info.json";
-import { upgradeSuccess } from "./Utils/random";
-import Retry from "./Components/Retry";
+import { closePopup, upgrade, sell } from "./Store/appSlice";
+import { RootState } from "./Store/Store.ts";
+import Retry from "./Components/Retry.tsx";
 
 function App() {
-    const [isOpen, setIsOpen] = useState(false); // 상태값을 열고 닫는 함수
-    const [cost, setCost] = useState(100000); // 돈
-    const [isBroken, setIsBroken] = useState(false); // 대학교 떨어짐
-    const [retry, setRetry] = useState(0); //면제권
-    const [level, setLevel] = useState(1); //레벨
+    const dispatch = useDispatch();
+    const { isOpen, isBroken, level } = useSelector(
+        (state: RootState) => state.app
+    );
 
-    const handleOpenPopup = useCallback(() => setIsOpen(true), []);
-    const handleClosePopup = useCallback(() => setIsOpen(false), []);
-    const handleRetry = useCallback(() => {
-        setIsBroken(false);
-        setLevel(1);
-    }, []);
-    const handleUseRetry = useCallback(() => {
-        if (retry === 0) {
-            alert("면제권이 없습니다.");
-            return;
-        }
-        setRetry((prevRetry) => prevRetry - 1);
-        setIsBroken(false);
-    }, [retry]);
-
-    const handleUpgrade = useCallback(() => {
+    const handleUpgrade = () => {
         const currentLevelInfo = uninfo[level - 1];
-        if (cost < currentLevelInfo.upgradeCost) {
-            alert("돈이 부족합니다.");
-            return;
-        }
-        setCost((prevCost) => prevCost - currentLevelInfo.upgradeCost);
-        if (!upgradeSuccess(currentLevelInfo.successRate)) {
-            setIsBroken(true);
-            return;
-        }
-        if (level === 20) {
-            alert("축하드립니다!");
-            return;
-        }
-        setLevel((prevLevel) => prevLevel + 1);
-    }, [cost, level]);
+        dispatch(
+            upgrade({
+                upgradeCost: currentLevelInfo.upgradeCost,
+                successRate: currentLevelInfo.successRate,
+            })
+        );
+    };
 
-    const handleSell = useCallback(() => {
+    const handleSell = () => {
         const currentLevelInfo = uninfo[level - 1];
-        setCost((prevCost) => prevCost + currentLevelInfo.sellPrice);
-        setLevel(1);
-    }, [level]);
-
-    useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === "l" && !isBroken) {
-                handleUpgrade();
-            } else if (event.key === "s" && !isBroken) {
-                handleSell();
-            }
-        };
-
-        window.addEventListener("keyup", handleKeyDown);
-        return () => window.removeEventListener("keyup", handleKeyDown);
-    }, [handleUpgrade, isBroken, handleSell]);
+        dispatch(sell(currentLevelInfo.sellPrice));
+    };
 
     return (
         <StyledApp>
             <StyledTitle>대학교 키우기</StyledTitle>
             <StyledSubTitle>S키 : 판매 L키 : 구매</StyledSubTitle>
-            <Info handleOpenPopup={handleOpenPopup} cost={cost} retry={retry} />
+            <Info />
             <Univ uninfo={uninfo} level={level} />
-            <PopupWrapper isOpen={isOpen} onClose={handleClosePopup}>
-                <Shop
-                    setlevel={setLevel}
-                    setRetry={setRetry}
-                    retry={retry}
-                    cost={cost}
-                    setCost={setCost}
-                    onclose={handleClosePopup}
-                />
+            <PopupWrapper
+                isOpen={isOpen}
+                onClose={() => dispatch(closePopup())}
+            >
+                <Shop />
             </PopupWrapper>
             <PopupWrapper isOpen={isBroken} onClose={() => {}}>
-                <Retry
-                    handleRetry={handleRetry}
-                    handleUseRetry={handleUseRetry}
-                />
+                <Retry />
             </PopupWrapper>
             <StyledControl>
                 <Button onClick={handleSell}>판매하기</Button>

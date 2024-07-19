@@ -1,6 +1,9 @@
+// Shop.tsx
 import styled from "styled-components";
 import { Button } from "./Button";
 import shopItemsData from "../shop.json"; // JSON 파일 import
+import { useDispatch } from "react-redux";
+import { buyItem, closePopup } from "../Store/appSlice";
 
 interface Item {
     id: number;
@@ -8,6 +11,7 @@ interface Item {
     price: number;
     startLevel?: number;
 }
+
 // Parse shop items to replace null with undefined
 const shopItems: { items: Item[] } = {
     items: shopItemsData.items.map((item) => ({
@@ -39,33 +43,12 @@ const StyledItem = styled.div`
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
-function Shop({
-    setRetry,
-    cost,
-    setCost,
-    retry,
-    setlevel,
-    onclose,
-}: {
-    setRetry: (retry: number) => void;
-    cost: number;
-    setCost: (cost: number) => void;
-    retry: number;
-    setlevel: (level: number) => void;
-    onclose: () => void;
-}) {
-    const buyItem = (itemPrice: number, startLevel?: number) => {
-        if (cost < itemPrice) {
-            alert("돈이 부족합니다.");
-            return;
-        }
-        if (startLevel !== undefined) {
-            setlevel(startLevel);
-        } else {
-            setRetry(retry + 1);
-        }
-        setCost(cost - itemPrice);
-        onclose();
+function Shop() {
+    const dispatch = useDispatch();
+
+    const handleBuyItem = (itemPrice: number, startLevel?: number) => {
+        dispatch(buyItem({ itemPrice, startLevel }));
+        dispatch(closePopup());
     };
 
     return (
@@ -75,7 +58,9 @@ function Shop({
                     <h1>{item.name}</h1>
                     <p>가격: {item.price}원</p>
                     <Button
-                        onClick={() => buyItem(item.price, item.startLevel)}
+                        onClick={() =>
+                            handleBuyItem(item.price, item.startLevel)
+                        }
                     >
                         구매
                     </Button>

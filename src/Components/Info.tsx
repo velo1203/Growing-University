@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { Button } from "./Button";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../Store/Store";
+import { openPopup } from "../Store/appSlice";
 
 const StyledInfo = styled.div`
     position: absolute;
@@ -30,15 +33,10 @@ const StyledMoney = styled.span`
     font-weight: bold;
     font-size: 1.4rem;
 `;
-function Info({
-    handleOpenPopup,
-    cost,
-    retry,
-}: {
-    handleOpenPopup: () => void;
-    cost: number;
-    retry: number;
-}) {
+function Info() {
+    const { cost, retry } = useSelector((state: RootState) => state.app);
+    const dispatch = useDispatch();
+
     return (
         <StyledInfo>
             <h1>내정보</h1>
@@ -49,7 +47,7 @@ function Info({
                 </p>
                 <p>면제권: {retry}개</p>
             </StyledInfomations>
-            <Button onClick={handleOpenPopup}>상점가기</Button>
+            <Button onClick={() => dispatch(openPopup())}>상점가기</Button>
         </StyledInfo>
     );
 }

@@ -1,4 +1,4 @@
 export function upgradeSuccess(successRate: number) {
-    const randomValue = Math.random(); // Generate a random float between 0 and 1
+    const randomValue = Math.random();
     return randomValue < successRate;
 }
