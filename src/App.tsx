@@ -1,17 +1,17 @@
 import { useEffect, useState, useCallback } from "react";
-import { Button } from "./components/Button";
-import Info from "./components/Info";
-import Univ from "./components/Univ";
-import PopupWrapper from "./components/Wrapper";
+import { Button } from "./Components/Button";
+import Info from "./Components/Info";
+import Univ from "./Components/Univ";
+import PopupWrapper from "./Components/Wrapper";
 import { StyledApp, StyledControl, StyledTitle } from "./StyledApp";
-import Shop from "./components/Shop";
+import Shop from "./Components/Shop";
 import uninfo from "./info.json";
-import { upgradeSuccess } from "./utils/random";
-import Retry from "./components/Retry";
+import { upgradeSuccess } from "./Utils/random";
+import Retry from "./Components/Retry";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false); // 상태값을 열고 닫는 함수
-    const [cost, setCost] = useState(1000000); // 돈
+    const [cost, setCost] = useState(100000); // 돈
     const [isBroken, setIsBroken] = useState(false); // 대학교 떨어짐
     const [retry, setRetry] = useState(0); //면제권
     const [level, setLevel] = useState(1); //레벨
