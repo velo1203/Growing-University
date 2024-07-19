@@ -45,7 +45,7 @@ function Univ() {
 
     return (
         <StyledUniv id="univ-container">
-            <StyledUnivImg src={`${level}.png`} alt="" />
+            <StyledUnivImg src={`${uninfo[level - 1].name}.png`} alt="" />
             <StyledUnivTitle>
                 {level}.{uninfo[level - 1].name}
             </StyledUnivTitle>
