@@ -71,6 +71,7 @@ function App() {
     return (
         <StyledApp>
             <StyledTitle>대학교 키우기</StyledTitle>
+            <StyledSubTitle>S : 판매 L : 구매</StyledSubTitle>
             <Info handleOpenPopup={handleOpenPopup} cost={cost} retry={retry} />
             <Univ uninfo={uninfo} level={level} />
             <PopupWrapper isOpen={isOpen} onClose={handleClosePopup}>

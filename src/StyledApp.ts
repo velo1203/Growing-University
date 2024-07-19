@@ -14,3 +14,7 @@ export const StyledControl = styled.div`
     justify-content: center;
     gap: 30px;
 `;
+
+export const StyledSubTitle = styled.div`
+    font-size: 1.5rem;
+`;
