@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Button } from "./Button";
-import { retry, useRetry } from "../Store/appSlice";
+import { retry, usingRetry } from "../Store/appSlice";
 import { useDispatch } from "react-redux";
 
 const StyledRetry = styled.div`
@@ -33,7 +33,7 @@ function Retry() {
             </Button>
             <Button
                 onClick={() => {
-                    dispatch(useRetry());
+                    dispatch(usingRetry());
                 }}
             >
                 면제권 사용

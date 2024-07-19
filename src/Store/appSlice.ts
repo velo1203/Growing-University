@@ -32,7 +32,7 @@ const appSlice = createSlice({
             state.isBroken = false;
             state.level = 1;
         },
-        useRetry(state) {
+        usingRetry(state) {
             if (state.retry === 0) {
                 alert("면제권이 없습니다.");
                 return;
@@ -85,7 +85,7 @@ export const {
     openPopup,
     closePopup,
     retry,
-    useRetry,
+    usingRetry,
     upgrade,
     sell,
     buyItem,
