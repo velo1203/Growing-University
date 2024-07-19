@@ -8,7 +8,6 @@ interface Item {
     price: number;
     startLevel?: number;
 }
-
 // Parse shop items to replace null with undefined
 const shopItems: { items: Item[] } = {
     items: shopItemsData.items.map((item) => ({
