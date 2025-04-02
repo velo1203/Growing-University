@@ -8,6 +8,10 @@ export const StyledTitle = styled.h1`
     font-size: 3rem;
     margin-top: 50px;
 `;
+export const StyledSubTitle = styled.h1`
+    font-size: 2rem;
+    margin-top: 50px;
+`;
 
 export const StyledControl = styled.div`
     display: flex;

@@ -5,7 +5,12 @@ import { Button } from "./Components/Button.ts";
 import Info from "./Components/Info";
 import Univ from "./Components/Univ";
 import PopupWrapper from "./Components/Wrapper";
-import { StyledApp, StyledControl, StyledTitle } from "./StyledApp";
+import {
+    StyledApp,
+    StyledControl,
+    StyledSubTitle,
+    StyledTitle,
+} from "./StyledApp";
 import Shop from "./Components/Shop";
 import uninfo from "./Config/info.json";
 import { closePopup, upgrade, sell } from "./Store/appSlice";
@@ -36,6 +41,7 @@ function App() {
     return (
         <StyledApp>
             <StyledTitle>대학교 키우기</StyledTitle>
+            <StyledSubTitle>만든사람 인스타 : dev._ho</StyledSubTitle>
             <Info />
             <Univ />
             <PopupWrapper
